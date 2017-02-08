@@ -12,3 +12,6 @@
 */
 Route::get('/', 'UserController@index');
 Route::resource('users', 'UserController');
+Route::get('/contact-us', function(){
+    return view('contact-us');
+});
