@@ -15,32 +15,16 @@
 
 <!-- Blog Categories Well -->
 <div class="well">
-    <h4>Blog Categories</h4>
+    <h4>Latest Posts</h4>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <ul class="list-unstyled">
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
+               @foreach($posts as $post)
+                   <li><a href="{{url('posts')}}"> {{$post->title}}</a></li>
+                @endforeach
             </ul>
         </div>
-        <div class="col-lg-6">
-            <ul class="list-unstyled">
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-            </ul>
-        </div>
+
     </div>
     <!-- /.row -->
 </div>
