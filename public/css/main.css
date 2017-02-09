@@ -4,3 +4,9 @@
 .footer{
     background-color: #999999;
 }
+#body{
+    min-height:250px;
+}
+body{
+    background-color: #2a88bd;
+}
