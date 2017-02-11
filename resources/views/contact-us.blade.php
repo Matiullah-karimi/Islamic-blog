@@ -4,12 +4,9 @@
 
     <form class="well form-horizontal" action=" " method="post"  id="contact_form">
         <fieldset>
-
-            <!-- Form Name -->
             <legend>Contact Us Today!</legend>
 
             <!-- Text input-->
-
             <div class="form-group">
                 <label class="col-md-4 control-label">First Name</label>
                 <div class="col-md-4 inputGroupContainer">
@@ -64,4 +61,6 @@
         </fieldset>
     </form>
 </div>
-</div><!-- /.container -->
+</div>
+
+    @endsection

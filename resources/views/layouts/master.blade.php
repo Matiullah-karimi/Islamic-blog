@@ -1,16 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Mawlana Rashed</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -41,23 +39,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Ummah Awakening</a>
+            <a class="navbar-brand" href="#">Mawlana Rashed</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{url('/')}}">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a href="{{url('/about')}}">About</a>
+                    <a href="{{ url('#') }}">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
                 </li>
                 <li>
-                    <a href="{{url('/contact-us')}}">Contact</a>
+                    <a href="{{ url('/contact-us') }}">Contact</a>
                 </li>
             </ul>
         </div>
@@ -87,21 +85,44 @@
 
     </div>
     <!-- /.row -->
-
-
-    <!-- Footer -->
-    <footer class="container footer">
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </footer>
-
 </div>
 <!-- /.container -->
+<!-- Footer -->
+{{--<footer class="footer navbar navbar-inverse navbar-fixed-bottom">--}}
+    {{--<div class="row">--}}
+        {{--<div class="col-lg-12">--}}
+            {{--<p>Copyright &copy; Your Website 2014</p>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<!-- /.row -->--}}
+{{--</footer>--}}
+<footer id="home-footer">
+    <div class="container">
+        <div class="row">
 
+            <div class="col-xs-12 col-sm-6 col-md-4 column">
+                <ul class="footer-ul">
+                    <li><a class="footer-link" href="{{ url('about') }}">About</a></li>
+                    <li><a class="footer-link" href="{{ url('services') }}">Service</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 column">
+                <ul class="footer-ul">
+                    <li><a class="footer-link" href="/">Test Data</a></li>
+                    <li><a class="footer-link" href="/">Test Data</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 column">
+                <ul class="footer-ul">
+                    <li><a class="footer-link" href="{{ url('contact') }}">Contact</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!-- END STICKY NAVBAR-->
+</footer>
 <!-- jQuery -->
 <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>
 

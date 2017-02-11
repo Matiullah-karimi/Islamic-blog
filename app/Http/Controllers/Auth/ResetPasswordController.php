@@ -34,6 +34,10 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+//        $this->middleware('guest');
+    }
+
+    public function resetPasswordRender(){
+        return view('auth.forgot-password');
     }
 }

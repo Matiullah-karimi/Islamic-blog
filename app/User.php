@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function findUserByEmail($email)
+    {
+        return $this->where('email', $email)->first();
+    }
+
 }
