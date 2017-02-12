@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('index', compact('posts'));
+        return view('posts.posts', compact('posts'));
     }
 
     /**
@@ -64,7 +64,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
+        return view('posts.edit-post', compact('post'));
     }
 
     /**
@@ -76,7 +77,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->update();
+
+        return redirect('/posts');
     }
 
     /**
@@ -87,6 +92,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect('posts');
     }
 }

@@ -17,7 +17,7 @@
                 </div>
             </div>
         @endforeach
-        @else
+    @else
         <div class="panel panel-default margin">
             <div class="panel-body">
                 <p>
@@ -27,8 +27,12 @@
         </div>
     @endif
 
-    @endsection
+@endsection
 
 @section('sidebar')
     @include('partials.sidebar')
 @endsection
+
+@section('footer')
+    @include('partials.footer')
+    @endsection

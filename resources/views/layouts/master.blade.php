@@ -33,13 +33,18 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Mawlana Rashed</a>
+            @if(!Auth::guest())
+            <a href="#" id="navigation">
+                <span class="navbar-brand glyphicon glyphicon-align-justify">
+                </span>
+            </a>
+            @endif
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,12 +63,46 @@
                     <a href="{{ url('/contact-us') }}">Contact</a>
                 </li>
             </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 
 </nav>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <li><a href="users">Users</a></li>
+    <a href="/posts">Posts</a>
+</div>
 
 <!-- Page Content -->
 <div class="container">
@@ -96,39 +135,26 @@
     {{--</div>--}}
     {{--<!-- /.row -->--}}
 {{--</footer>--}}
-<footer id="home-footer">
-    <div class="container">
-        <div class="row">
+@yield('footer')
 
-            <div class="col-xs-12 col-sm-6 col-md-4 column">
-                <ul class="footer-ul">
-                    <li><a class="footer-link" href="{{ url('about') }}">About</a></li>
-                    <li><a class="footer-link" href="{{ url('services') }}">Service</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 column">
-                <ul class="footer-ul">
-                    <li><a class="footer-link" href="/">Test Data</a></li>
-                    <li><a class="footer-link" href="/">Test Data</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 column">
-                <ul class="footer-ul">
-                    <li><a class="footer-link" href="{{ url('contact') }}">Contact</a></li>
-                    <li></li>
-                </ul>
-            </div>
-        </div>
-        <!--/row-->
-    </div>
-    <!-- END STICKY NAVBAR-->
-</footer>
 <!-- jQuery -->
 <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
+<script>
+    var open = false;
+    $("#navigation").click(function(){
+        if (open===false){
+            document.getElementById("mySidenav").style.width = "250px";
+            open = true;
+        }else{document.getElementById("mySidenav").style.width = "0";
+        open=false;}
+
+    });
+
+</script>
 </body>
 
 </html>

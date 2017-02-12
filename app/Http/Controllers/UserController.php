@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        $users = User::all();
+        return view('users.users', compact('users'));
     }
 
     /**
@@ -63,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit-user', compact('user'));
     }
 
     /**
@@ -75,7 +77,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->role = $request->get('role');
+
+        $user->update();
+
+        return redirect('users');
     }
 
     /**
@@ -84,8 +94,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect('users');
     }
 }

@@ -10,18 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('posts', 'PostController');
-Route::get('/', 'PostController@index');
-Route::resource('users', 'UserController');
+Route::resource('/home', 'HomeController');
+Route::get('/', 'HomeController@index');
+Route::resource('/users', 'UserController');
 Route::get('/contact-us', function(){
     return view('contact-us');
 });
 
+Auth::routes();
 
-
-Route::get('/auth/login', 'Auth\LoginController@loginRender');
-Route::post('/auth/login', 'Auth\LoginController@loginAction');
-Route::get('/auth/logout', 'Auth\LoginController@logoutAction');
-
-Route::get('/auth/forgot/password', 'Auth\ResetPasswordController@resetPasswordRender');
-Route::post('/auth/forgot/password', 'Auth\ResetPasswordController@resetPasswordAction');
+Route::get('/home', 'HomeController@index');
+Route::resource('/posts', 'PostController');
+Route::get('/posts/destroy/{post}', 'PostController@destroy');
+Route::get('/users/destroy/{user}', 'UserController@destroy');

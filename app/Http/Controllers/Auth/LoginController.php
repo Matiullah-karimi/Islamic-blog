@@ -53,7 +53,7 @@ class LoginController extends Controller
     public function loginAction()
     {
         if ($this->authenticate($this->request->get('email'), $this->request->get('password'))) {
-            return view('dashboard.dashboard');
+            return view('dashboard.index');
         }
 
         if (!$this->authenticate($this->request->get('email'), $this->request->get('password'))) {
